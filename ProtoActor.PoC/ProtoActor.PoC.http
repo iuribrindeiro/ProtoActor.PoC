@@ -1,0 +1,6 @@
+@ProtoActor.PoC_HostAddress = http://localhost:5148
+
+GET {{ProtoActor.PoC_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

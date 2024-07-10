@@ -1,0 +1,77 @@
+version: "3"
+
+services:
+  
+  loki:
+    image: grafana/loki:2.4.1
+    ports:
+      - "3100:3100"
+  
+  grafana:
+    image: grafana/grafana:8.3.3
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    volumes:
+      - ./grafana/provisioning/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./grafana/provisioning/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yaml
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+  
+  jaeger:
+    image: jaegertracing/all-in-one:1.28
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "6831:6831/udp"
+      - "14250"
+  
+  prometheus:
+    image: prom/prometheus:v2.32.1
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.40.0
+    command: [ "--config=/etc/otel-collector-config.yml" ]
+    volumes:
+      - ./otel-collector/otel-collector-config.yml:/etc/otel-collector-config.yml
+    ports:
+      - "8888:8888"   # Prometheus metrics exposed by the collector
+      - "8889:8889"   # Prometheus exporter metrics
+      - "4317:4317"   # OTLP gRPC receiver
+      - "35670:55679" # zpages extension
+  
+  
+  consul-agent-1: &consul-agent
+    image: hashicorp/consul
+    networks:
+      - consul-demo
+    command: "agent -retry-join consul-server-bootstrap -client 0.0.0.0"
+
+  consul-agent-2:
+    <<: *consul-agent
+
+  consul-agent-3:
+    <<: *consul-agent
+
+  consul-server-1: &consul-server
+    <<: *consul-agent
+    command: "agent -server -retry-join consul-server-bootstrap -client 0.0.0.0"
+
+  consul-server-2:
+    <<: *consul-server
+
+  consul-server-bootstrap:
+    <<: *consul-agent
+    ports:
+      - "8400:8400"
+      - "8500:8500"
+      - "8600:8600"
+      - "8600:8600/udp"
+    command: "agent -server -bootstrap-expect 3 -ui -client 0.0.0.0"
+
+networks:
+  consul-demo:

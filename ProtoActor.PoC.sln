@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoActor.PoC", "ProtoActor.PoC\ProtoActor.PoC.csproj", "{21BB6340-1C0C-41F5-8C6E-E583BA228172}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{B69E8781-7639-45AE-9641-76381EDD58EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadBalancing", "LoadBalancing\LoadBalancing.csproj", "{0ADD832B-7738-48AD-886A-18247880E1C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21BB6340-1C0C-41F5-8C6E-E583BA228172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21BB6340-1C0C-41F5-8C6E-E583BA228172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21BB6340-1C0C-41F5-8C6E-E583BA228172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21BB6340-1C0C-41F5-8C6E-E583BA228172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B69E8781-7639-45AE-9641-76381EDD58EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B69E8781-7639-45AE-9641-76381EDD58EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B69E8781-7639-45AE-9641-76381EDD58EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B69E8781-7639-45AE-9641-76381EDD58EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ADD832B-7738-48AD-886A-18247880E1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADD832B-7738-48AD-886A-18247880E1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ADD832B-7738-48AD-886A-18247880E1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ADD832B-7738-48AD-886A-18247880E1C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+@LoadBalancing_HostAddress = http://localhost:5119
+
+GET {{LoadBalancing_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

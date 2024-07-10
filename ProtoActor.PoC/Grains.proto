@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProtoClusterTutorial";
+
+import "google/protobuf/empty.proto";
+
+package EventApp;
+
+message AddTicketsRequest {
+  message NewTicket {
+    string id = 1;
+    string seat = 2;
+    string gate = 3;
+  }
+
+  string event_id = 1;
+  repeated NewTicket tickets = 2;
+}
+
+message CreateEventRequest {
+  string id = 1;
+  string name = 2;
+}
+
+
+service EventGrain {
+  rpc AddTickets (AddTicketsRequest) returns (google.protobuf.Empty);
+  rpc CreateEvent (CreateEventRequest) returns (google.protobuf.Empty);
+}
