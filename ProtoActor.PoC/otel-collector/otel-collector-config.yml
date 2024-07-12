@@ -15,7 +15,7 @@ exporters:
       enabled: true
   
   # export traces to Jaeger
-  jaeger:
+  otlp:
     endpoint: jaeger:14250
     tls:
       insecure: true
@@ -46,7 +46,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [probabilistic_sampler, batch]
-      exporters: [jaeger]
+      exporters: [otlp]
     
     
     # receive metrics from Open Telemetry Protocol endpoint

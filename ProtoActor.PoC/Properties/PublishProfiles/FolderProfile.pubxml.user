@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\iurib\source\repos\ProtoActor.PoC\ProtoActor.PoC\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2024-07-11T18:46:12.1946889Z||;True|2024-07-11T13:26:06.4959337-03:00||;True|2024-07-10T19:11:45.4556004-03:00||;True|2024-07-10T18:28:54.3136691-03:00||;True|2024-07-10T18:27:56.0524047-03:00||;False|2024-07-10T18:22:29.0966604-03:00||;True|2024-07-10T18:21:49.1841959-03:00||;True|2024-07-10T18:21:11.6824105-03:00||;True|2024-07-10T18:16:41.1634548-03:00||;True|2024-07-10T18:16:24.9613824-03:00||;False|2024-07-10T18:16:16.1212485-03:00||;True|2024-07-10T18:10:05.7219640-03:00||;True|2024-07-10T18:06:57.0965097-03:00||;True|2024-07-10T18:03:56.7815764-03:00||;True|2024-07-10T18:01:04.3725887-03:00||;False|2024-07-10T18:00:06.2297542-03:00||;False|2024-07-10T17:58:01.8983366-03:00||;True|2024-07-10T17:53:09.5294062-03:00||;False|2024-07-10T17:51:15.3654307-03:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="Default">
+      <Value>Server=localhost%3bPort=5432%3bDatabase=EventsDb%3bUid=postgres%3bPwd=admin%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

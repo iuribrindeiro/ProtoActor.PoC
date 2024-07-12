@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.27.2" />
+    <PackageReference Include="Google.Protobuf.Tools" Version="3.27.2" />
+    <PackageReference Include="Grpc.Core" Version="2.46.6" />
+    <PackageReference Include="Grpc.Tools" Version="2.65.0-pre1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Proto.Cluster" Version="1.6.1-alpha.0.22" />
+    <PackageReference Include="Proto.Cluster.CodeGen" Version="1.6.1-alpha.0.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <ProtoGrain Include="Grains.proto" />
+  </ItemGroup>
+
+    <ItemGroup>
+	    <Protobuf Include="Grains.proto" />
+    </ItemGroup>
+</Project>

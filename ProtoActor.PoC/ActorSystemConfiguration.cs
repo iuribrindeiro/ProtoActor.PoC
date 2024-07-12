@@ -1,23 +1,26 @@
+using Dumpify;
 using Marten;
 using Proto;
 using Proto.Cluster;
 using Proto.Cluster.Consul;
 using Proto.Cluster.PartitionActivator;
+using Proto.Context;
 using Proto.DependencyInjection;
+using Proto.Mailbox;
 using Proto.Persistence.Marten;
 using Proto.Remote;
 using Proto.Remote.GrpcNet;
-using ProtoClusterTutorial;
+using ProtoActor.PoC.Persistence.Marten;
+using ProtoCluster;
 
 public static class ActorSystemConfiguration
 {
-    public static void AddActorSystem(this IServiceCollection serviceCollection, IConfiguration configuration) =>
+    public static void AddActorSystem(this IServiceCollection serviceCollection, IConfiguration configuration)
+    {
         serviceCollection.AddSingleton(provider =>
         {
             // actor system configuration
-            var actorSystemConfig = ActorSystemConfig
-                .Setup()
-                .WithMetrics();
+            var actorSystemConfig = new ActorSystemConfig().WithMetrics();
 
             // remote configuration
             var remoteConfig = GrpcNetRemoteConfig
@@ -25,22 +28,25 @@ public static class ActorSystemConfiguration
                 .WithProtoMessages(GrainsReflection.Descriptor);
 
             // Persistence configuration
-            var psqlProvider = new MartenProvider(provider.GetRequiredService<IDocumentStore>());
+            var psqlProvider =
+                new MartenStoreProvider<IEventGrainEvents, Event>(provider.GetRequiredService<IDocumentStore>());
 
             // cluster configuration
             var clusterConfig = ClusterConfig
                 .Setup(
                     "EventsCluster",
                     new ConsulProvider(new ConsulProviderConfig(),
-                        clientConfiguration: c => c.Address = new Uri("http://localhost:8500")),
+                        c => c.Address = new Uri("http://localhost:8500")),
                     new PartitionActivatorLookup())
                 .WithClusterKind(
-                    new ClusterKind(EventGrainActor.Kind,
+                    new ClusterKind(
+                        EventGrainActor.Kind,
                         Props.FromProducer(() =>
                             new EventGrainActor(
                                 (context, clusterIdentity)
                                     => new EventGrain(psqlProvider, context, clusterIdentity,
-                                        provider.GetRequiredService<ILogger<EventGrain>>())))
+                                        provider.GetRequiredService<ILogger<EventGrain>>()))
+                        )
                     )
                 );
 
@@ -50,4 +56,5 @@ public static class ActorSystemConfiguration
                 .WithRemote(remoteConfig)
                 .WithCluster(clusterConfig);
         }).AddSingleton(p => p.GetRequiredService<ActorSystem>().Cluster());
+    }
 }

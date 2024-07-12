@@ -1,10 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoActor.PoC", "ProtoActor.PoC\ProtoActor.PoC.csproj", "{21BB6340-1C0C-41F5-8C6E-E583BA228172}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{B69E8781-7639-45AE-9641-76381EDD58EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadBalancing", "LoadBalancing\LoadBalancing.csproj", "{0ADD832B-7738-48AD-886A-18247880E1C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{B5699D64-A862-4FAC-BBCF-4EF19FB4D809}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +29,15 @@ Global
 		{0ADD832B-7738-48AD-886A-18247880E1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ADD832B-7738-48AD-886A-18247880E1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ADD832B-7738-48AD-886A-18247880E1C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5699D64-A862-4FAC-BBCF-4EF19FB4D809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5699D64-A862-4FAC-BBCF-4EF19FB4D809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5699D64-A862-4FAC-BBCF-4EF19FB4D809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5699D64-A862-4FAC-BBCF-4EF19FB4D809}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF86171E-67B1-45F6-9BA4-E905D918EA6D}
 	EndGlobalSection
 EndGlobal

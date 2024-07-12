@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProtoCluster";
+
+import "google/protobuf/empty.proto";
+
+package EventApp;
+
+message NewTicket {
+    string id = 1;
+    string seat = 2;
+    string gate = 3;
+}
+
+message AddTicketsRequest {
+  NewTicket ticket = 2;
+}
+
+message AddTicketsResponse {
+    bool TicketAdded = 1;
+}
+
+message CreateEventRequest {
+  string id = 1;
+  string name = 2;
+}
+
+message GetTotalTicketsResponse {
+    int32 total = 1;
+}
+
+message ScanTicketRequest {
+    string ticketId = 1;
+}
+
+message ScanTicketResponse {
+    bool ticketScanned = 1;
+}
+
+message GetTicketsResponse {
+  repeated Ticket tickets = 1;
+  
+  message Ticket {
+    string id = 1;
+    string seat = 2;
+    string gate = 3;
+    bool scanned = 4;
+  }
+}
+
+service EventGrain {
+  rpc AddTickets (AddTicketsRequest) returns (AddTicketsResponse);
+  rpc CreateEvent (CreateEventRequest) returns (google.protobuf.Empty);
+  rpc GetTotalTickets (google.protobuf.Empty) returns (GetTotalTicketsResponse);
+  rpc GetTotalTicketsScanned (google.protobuf.Empty) returns (GetTotalTicketsResponse);
+  rpc ScanTicket (ScanTicketRequest) returns (ScanTicketResponse);
+  rpc GetTickets (google.protobuf.Empty) returns (GetTicketsResponse);
+}
